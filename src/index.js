@@ -17,32 +17,18 @@ import myModule from './myModule.js';
 import './styles.css';
 */
 
-console.log("[Local Storage Test] Starting test...")
+import Projects from "./Projects.js"
 
-localStorage.setItem("myKey", "myValue");
-console.log(localStorage.getItem("myKey"));
+const myProjects = Projects;
 
-const myTask1 = {
-    name: "Do the laundry",
-    dueDate: "23-07-2023",
-    priority: "medium",
-    description: "Wash the colored clothes, and maybe the dark clothes as well",
-    status: "to do"
-};
+console.log("Initialize projects object:")
+console.log(myProjects.returnProjects());
 
-const myTask2 = {
-    name: "Wash dishes",
-    dueDate: "23-07-2023",
-    priority: "high",
-    description: "Handwash wooden utensils and run dishwasher",
-    status: "done"
-}
+console.log("Add a project to the projects object:")
+myProjects.createNewProject("my new project");
+console.log(myProjects.returnProjects());
 
-const tasksArray = [myTask1, myTask2];
-
-
-
-localStorage.setItem("tasks", JSON.stringify(tasksArray));
-console.log(JSON.parse(localStorage.getItem("tasks")));
-
-console.log("[Local Storage Test] Test completed!")
+console.log("Remove project:")
+const firstProject = Object.entries(myProjects.returnProjects())[0][0]; //first [0]: to get the first entry, second [0]: to get the key of that entry ([1] would get the value)
+console.log("Deletion succesful: " + myProjects.deleteProject(firstProject));
+console.log(myProjects.returnProjects());
