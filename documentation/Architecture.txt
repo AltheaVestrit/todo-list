@@ -1,0 +1,39 @@
+===== Projects =====
+> Project
+Create
+	• createNewProject()
+Return
+	• hasProject()
+	• returnProjects()*
+	• returnProjectIDs()
+	• returnProject()
+Update
+	• updateProject()
+Delete
+	• deleteProject()
+	
+> Task
+Create
+	• createNewTask()
+Return
+	• returnTasks()*
+	• returnTaskIDs()
+	• returnTask()
+Update
+	• updateTask()
+Delete
+	• deleteTask()
+
+
+==== Tasks ====
+Create
+	• createNewTask()
+Return
+	• hasTask()
+	• returnTasks()*
+	• returnTaskIDs()
+	• returnTask()
+Update
+	• updateTask()
+Delete
+	• deleteTask()

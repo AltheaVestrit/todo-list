@@ -1,0 +1,8 @@
+Dropdown menu:
+HTML Form Elements - https://courses.kevinpowell.co/view/courses/conquering-responsive-layouts/233004-day-1-using-percentages-avoiding-heights/678543-percentages-vs-fixed-widths
+
+Modals:
+How to Build a Modal with JavaScript - https://courses.kevinpowell.co/view/courses/conquering-responsive-layouts/233004-day-1-using-percentages-avoiding-heights/678543-percentages-vs-fixed-widths
+
+Responsive design:
+Percentages vs Fixed widths - https://courses.kevinpowell.co/view/courses/conquering-responsive-layouts/233004-day-1-using-percentages-avoiding-heights/678543-percentages-vs-fixed-widths
