@@ -21,14 +21,10 @@ import myProjects from "./Projects.js";
 
 // ====================== TESTING ======================== //
 
+// PROJECT MODULES
+// CREATE
 console.log("=================================");
 console.log("INITIALIZE PROJECTS IIFE");
-console.log(myProjects.returnProjects());
-
-console.log("=================================");
-console.log("UPDATE PROJECT NAME");
-const firstProject = Object.entries(myProjects.returnProjects())[0][0]; //first [0]: to get the first entry, second [0]: to get the key of that entry ([1] would get the value)
-console.log("Update succesful: " + myProjects.updateProject(firstProject,"Blabla"));
 console.log(myProjects.returnProjects());
 
 console.log("=================================");
@@ -36,8 +32,27 @@ console.log("ADD NEW PROJECT");
 myProjects.createNewProject("My new project");
 console.log(myProjects.returnProjects());
 
+// RETURN
 console.log("=================================");
-console.log("DELETE PROJECT")
+console.log("RETURN PROJECT");
+console.log(newProject, myProjects.returnProject(newProject));
+
+console.log("=================================");
+console.log("TRY RETURNING NON-EXISTING PROJECT");
+console.log(firstProject, myProjects.returnProject(firstProject));
+
+// UPDATE
+console.log("=================================");
+console.log("UPDATE PROJECT NAME");
+const firstProject = myProjects.returnProjectIDs()[0];
+console.log(
+  "Update succesful: " + myProjects.updateProject(firstProject, "Blabla")
+);
+console.log(myProjects.returnProjects());
+
+// DELETE
+console.log("=================================");
+console.log("DELETE PROJECT");
 console.log("Deletion succesful: " + myProjects.deleteProject(firstProject));
 console.log(myProjects.returnProjects());
 
@@ -46,24 +61,85 @@ console.log("TRY TO DELETE NON-EXISTING PROJECT");
 console.log("Deletion succesful: " + myProjects.deleteProject(firstProject)); //firstProject was already deleted before
 console.log(myProjects.returnProjects());
 
+// TASKS MODULES
+// CREATE
 console.log("=================================");
 console.log("ADD NEW TASK TO EXISTING PROJECT");
-const newProject = Object.entries(myProjects.returnProjects())[0][1];
-newProject.tasks.createNewTask({name: "my new task", priority: "high"});
-console.log(newProject.tasks.returnTasks());
-
-console.log("=================================");
-console.log(myProjects.projects);
+const newProject = myProjects.returnProjectIDs()[0];
+console.log(
+  "Task created: " +
+    myProjects.createNewTask(newProject, {
+      name: "my new task",
+      priority: "high",
+    })
+);
+console.log(myProjects.returnTasks(newProject));
 
 console.log("=================================");
 console.log("TRY TO ADD NEW TASK TO NON-EXISTING PROJECT");
-firstProject.tasks.createNewTask({name: "my new task", priority: "high"});
-console.log(newProject.tasks.returnTasks());
+console.log(
+  "Task created: " +
+    myProjects.createNewTask(firstProject, {
+      name: "my new task",
+      priority: "high",
+    })
+);
 
-/*
+// RETURN
+console.log("=================================");
+console.log("RETURN TASK");
+console.log(myTask, myProjects.returnTask(newProject, myTask));
 
-To do:
-- Figure out: why can projects not be accessed, but tasks can
-- How to deal with adding task to non-existing project? Is this even a valid use case?
+console.log("=================================");
+console.log("TRY RETURNING NON-EXISTSING TASK");
+console.log("23497234987", myProjects.returnTask(newProject, "23497234987"));
+console.log(myProjects.returnTasks(newProject));
 
-*/
+// UPDATE
+console.log("=================================");
+console.log("UPDATE EXISTING TASK");
+const myTask = myProjects.returnTaskIDs(newProject)[0];
+console.log(
+  "Task updated: " +
+    myProjects.updateTask(newProject, myTask, {
+      name: "updated task",
+      priority: "medium",
+      dueDate: "today",
+    })
+);
+console.log(myProjects.returnTasks(newProject));
+
+console.log("=================================");
+console.log("TRY UPDATING EXISTING TASK IN NON-EXISTING PROJECT");
+console.log(
+  "Task updated: " +
+    myProjects.updateTask(firstProject, myTask, {
+      name: "updated task",
+      priority: "medium",
+      dueDate: "today",
+    })
+);
+
+console.log("=================================");
+console.log("TRY UPDATING NON-EXISTING TASK IN EXISTING PROJECT");
+console.log(
+  "Task updated: " +
+    myProjects.updateTask(newProject, "23423498734", {
+      name: "updated task",
+      priority: "medium",
+      dueDate: "today",
+    })
+);
+
+// DELETE
+console.log("=================================");
+console.log("DELETE TASK");
+console.log("Task deleted: " + myProjects.deleteTask(newProject, myTask));
+console.log(myProjects.returnTasks(newProject));
+
+console.log("=================================");
+console.log("TRY DELETING NON-EXISTING TASK");
+console.log(
+  "Task deleted: " + myProjects.deleteTask(newProject, "23497234987")
+);
+console.log(myProjects.returnTasks(newProject));
