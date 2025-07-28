@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:600|Inter:400");
+
+/* COLORS AND FONTS */
+:root {
+    --primary: #4f46e5; /* buttons, highlights, active elements */
+    --secondary: #38bdf8; /* accents, hover states, secondary buttons */
+    --background: #f9fafb; /* main background */
+    --sidebar: #e5e7eb; /* sidebar background */
+    --text-primary: #111827; /* main text color */
+    --text-secondary: #6b7280; /* descriptions, labels, less prominent text */
+    --success: #10B981; /* success messages, completed tasks */
+    --warning: #f59e0b; /* upcoming deadlines, warnings */
+    --danger: #ef4444; /* delete actions, overdue tasks */
+    --white: #ffffff; /* cards, modals, contrast elements */
+    --border: #D1D5DB; /* input borders */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--text-primary); /* Charcoal Black */
+    margin-bottom: 0.5rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  
+body, p, span, li {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--text-secondary); /* Slate Gray */
+  line-height: 1.6;
+}
+
+
+button, label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--white);
+}
+
+
+input, textarea, select {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: var(--text-primary);
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+}
+
+
+.small-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* HEADER */

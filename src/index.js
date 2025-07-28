@@ -12,11 +12,9 @@ import json from './data.json5';
 
 // import additional js files:
 import myModule from './myModule.js';
-
-// import css:
-import './styles.css';
 */
 
+import './styles.css';
 import myProjects from "./Projects.js";
 
 // ====================== TESTING ======================== //
