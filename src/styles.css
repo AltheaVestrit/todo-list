@@ -7,11 +7,12 @@
     --background: #f9fafb; /* main background */
     --sidebar: #e5e7eb; /* sidebar background */
     --text-primary: #111827; /* main text color */
-    --text-secondary: #6b7280; /* descriptions, labels, less prominent text */
+    --text-secondary: #606878; /* descriptions, labels, less prominent text */
     --success: #10B981; /* success messages, completed tasks */
     --warning: #f59e0b; /* upcoming deadlines, warnings */
     --danger: #ef4444; /* delete actions, overdue tasks */
     --white: #ffffff; /* cards, modals, contrast elements */
+    --black: #000000;
     --border: #D1D5DB; /* input borders */
 }
 
@@ -32,7 +33,7 @@ h1, h2, h3 {
     font-size: 1.5rem;
   }
   h3 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
   
   
@@ -71,4 +72,53 @@ input, textarea, select {
   color: var(--text-secondary);
 }
 
+/* CONTAINER */
+.container {
+    width: 80%;
+    background-color: var(--background);
+    margin: 0 auto;
+    padding: 1em;
+}
+
 /* HEADER */
+header {
+    margin: 1rem;
+    padding-left: 6%;
+}
+
+/* MAIN */
+main {
+    display: grid;
+    grid-template-columns: 14rem 1fr;
+    gap: 1rem;
+}
+
+/* NAV */
+nav {
+    background-color: var(--sidebar);
+}
+
+.project-menu-header {
+    padding-left: 1rem;
+}
+
+.project-menu-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-menu-list li {
+    padding: 0.5rem 1rem;
+}
+
+.project-menu-list li:hover {
+    background-color: var(--secondary);
+    color: var(--black);
+}
+
+.project-active {
+    background-color: var(--primary);
+    color: var(--white);
+}

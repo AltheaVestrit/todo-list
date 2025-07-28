@@ -1,0 +1,14 @@
+for font-sizes:
+	• 1rem = 1 x font-size of ROOT element
+	• 1em = 1 x font-size of PARENT element
+
+for margins and paddings:
+	• 1rem = 1 x font-size of ROOT element
+	• 1em = 1 x font-size of CURRENT element
+
+1rem usually is 16px as browser default
+
+Recommendations:
+	• Use rem with font-size because it always looks at the root or HTML element for font-size . So, we don't need to worry about parent-child calculations as with em .
+	• Use em with padding as em will adjust the padding based on the font-size of that element (good for button padding).
+	• Use rem with margin if you want consistent space among all the adjacent elements. 

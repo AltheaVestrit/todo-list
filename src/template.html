@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-    <h1>TO-DO LIST</h1>
-    <aside>
-        <h3>PROJECTS</h3>
-        <div class="projects-container">
-            <h4>Project 1</h4>
-            <h4>Project 2</h4>
-            <h4>Project 3</h4>
-            <h4>Project 4</h4>
-            <h4>Project 5</h4>
-        </div>
-        <button>+ New Project</button>
-    </aside>
-    <main>
-        <h2>Project 1</h2>
-        <button>+ New Task</button>
-        <table>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>TO-DO LIST</h1>
+      </header>
+      <main>
+        <nav class="project-menu">
+          <h3 class="project-menu-header">PROJECTS</h3>
+          <ul class="project-menu-list">
+            <li class="project-active">Project 1</li>
+            <li>Project 2</li>
+            <li>Project 3</li>
+            <li>Project 4</li>
+            <li>Project 5</li>
+          </ul>
+          <button>+ New Project</button>
+        </nav>
+        <div class="project-container">
+          <h2>Project 1</h2>
+          <button>+ New Task</button>
+          <table>
             <thead>
-                <tr>
-                    <td>Task Name</td>
-                    <td>Description</td>
-                    <td>Due Date</td>
-                    <td>Priority</td>
-                    <td>Status</td>
-                    <td>Actions</td>
-                </tr>
+              <tr>
+                <td>Task Name</td>
+                <td>Description</td>
+                <td>Due Date</td>
+                <td>Priority</td>
+                <td>Status</td>
+                <td>Actions</td>
+              </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Task 1</td>
-                    <td>Lorem ipsum</td>
-                    <td>2025-08-01</td>
-                    <td>High</td>
-                    <td>In Progress</td>
-                    <td>✏️ 🗑️ 🔄</td>
-                </tr>
+              <tr>
+                <td>Task 1</td>
+                <td>Lorem ipsum</td>
+                <td>2025-08-01</td>
+                <td>High</td>
+                <td>In Progress</td>
+                <td>✏️ 🗑️ 🔄</td>
+              </tr>
             </tbody>
-        </table>
-    </main>
-</body>
+          </table>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>
