@@ -8,21 +8,21 @@
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
-    <div class="container">
+    <div id="container">
       <header>
         <h1>TO-DO LIST</h1>
       </header>
       <main>
-        <nav class="project-menu">
-          <h3 class="project-menu-header">PROJECTS</h3>
-          <ul class="project-menu-list"></ul>
-          <button class="new-project-btn btn">+ New Project</button>
+        <nav id="project-menu">
+          <h3 id="project-menu-header">PROJECTS</h3>
+          <ul id="project-menu-list"></ul>
+          <button id="new-project-btn" class="btn">+ New Project</button>
         </nav>
-        <div class="project-container">
-          <h2 class="active-project-name">Project 1</h2>
-          <button class="new-task-btn btn">+ New Task</button>
+        <div id="project-container">
+          <h2 id="active-project-name">Project 1</h2>
+          <button id="new-task-btn" class="btn">+ New Task</button>
           
-          <div class="task-table">
+          <div id="task-table">
             <div class="cell tbl-head">Task Name</div>
             <div class="cell tbl-head">Description</div>
             <div class="cell tbl-head">Due Date</div>
@@ -35,15 +35,15 @@
             <div class="cell">High</div>
             <div class="cell">In Progress</div>
             <div class="cell">
-              <button class="task-btn btn-edit tooltip">
+              <button id="btn-edit" class="task-btn tooltip">
                 ✏️
                 <span class="tooltiptext small-text">Edit</span>
               </button>
-              <button class="task-btn btn-delete tooltip">
+              <button id="btn-delete" class="task-btn tooltip">
                 🗑️
                 <span class="tooltiptext small-text">Delete</span>
               </button>
-              <button class="task-btn btn-change-project tooltip">
+              <button id="btn-change-project" class="task-btn tooltip">
                 🔄
                 <span class="tooltiptext small-text">Change Project</span>
               </button>

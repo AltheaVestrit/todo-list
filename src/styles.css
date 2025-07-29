@@ -73,7 +73,7 @@ input, textarea, select {
 }
 
 /* CONTAINER */
-.container {
+#container {
     background-color: var(--background);
     margin: 0 auto;
     padding: 2rem;
@@ -98,16 +98,16 @@ nav {
     background-color: var(--sidebar);
 }
 
-.project-menu {
+#project-menu {
   text-align: center;
 }
 
-.project-menu-header {
+#project-menu-header {
     padding-left: 1rem;
     text-align: left;
 }
 
-.project-menu-list {
+#project-menu-list {
     list-style-type: none;
     padding: 0;
     display: flex;
@@ -115,11 +115,11 @@ nav {
     text-align: left;
 }
 
-.project-menu-list li {
+#project-menu-list li {
     padding: 0.5rem 1rem;
 }
 
-.project-menu-list li:hover {
+#project-menu-list li:hover {
     background-color: var(--secondary);
     color: var(--black);
 }
@@ -140,15 +140,16 @@ nav {
 
 .btn:hover {
   background-color: var(--secondary);
+  color: var(--black);
 }
 
 /* PROJECT OVERVIEW */
-.project-container {
+#project-container {
   padding-left: 2rem;
 }
 
 /* GRID */
-.task-table {
+#task-table {
   display: grid;
   grid-template-columns: max-content 1fr repeat(4, max-content);
   border: 0.2px solid var(--border);

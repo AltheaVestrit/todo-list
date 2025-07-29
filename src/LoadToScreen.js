@@ -1,6 +1,6 @@
 export default (function LoadToScreen() {
 
-    const projectMenuList = document.querySelector(".project-menu-list");
+    const projectMenuList = document.querySelector("#project-menu-list");
     const activeProjectName = document.querySelector("#active-project-name");
 
     const loadProjectsToNav = (obj) => {
