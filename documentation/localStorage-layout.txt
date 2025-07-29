@@ -1,0 +1,30 @@
+Object stored in localData:
+---------------------------
+
+userData: {
+	id1: {
+		name: project1, 
+		tasks: {
+			id1-1: {
+				name: task1,
+				description: description1,
+				dueDate: date1
+				},
+			id1-2: {
+				name: task2,
+				description: description2,
+				dueDate: date2
+			}
+		}
+	},
+	id2: {
+		name: project2,
+		tasks: {
+			id2-1: {
+				name: task3,
+				description: description3,
+				dueDate: date3
+			}
+		}
+	}
+}

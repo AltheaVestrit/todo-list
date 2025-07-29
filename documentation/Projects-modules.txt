@@ -3,8 +3,8 @@
 Create
 	• createNewProject()
 Return
+	• returnAllData()
 	• hasProject()
-	• returnProjects()*
 	• returnProjectIDs()
 	• returnProject()
 Update
@@ -16,21 +16,8 @@ Delete
 Create
 	• createNewTask()
 Return
-	• returnTasks()*
-	• returnTaskIDs()
-	• returnTask()
-Update
-	• updateTask()
-Delete
-	• deleteTask()
-
-
-==== Tasks ====
-Create
-	• createNewTask()
-Return
 	• hasTask()
-	• returnTasks()*
+	• returnAllTasks()
 	• returnTaskIDs()
 	• returnTask()
 Update

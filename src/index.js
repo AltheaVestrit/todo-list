@@ -15,11 +15,17 @@ import myModule from './myModule.js';
 */
 
 import './styles.css';
-import myProjects from "./Projects.js";
+import StartProjects from "./Projects.js";
+import dataLoader from "./DataLoader.js";
+import LoadToScreen from "./LoadToScreen";
 
+const myProjects = StartProjects(dataLoader.load());
+myProjects.createNewProject("New Project");
+
+LoadToScreen.loadProjectsToNav(myProjects.returnAllData());
 // ====================== TESTING ======================== //
 
-
+/*
 // PROJECT MODULES
 console.log("=================================");
 console.log("INITIALIZE PROJECTS IIFE");
@@ -146,3 +152,4 @@ console.log(myProjects.returnTasks(newProject));
 
 
 console.log(myProjects.returnAllData());
+*/

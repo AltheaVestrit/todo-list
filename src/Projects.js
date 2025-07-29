@@ -1,28 +1,29 @@
-import Tasks from "./Tasks.js";
-
-export default (function Projects() {
-  let projects = {};
-
+export default function StartProjects(projects = false) {
   // PROJECT METHODS
   // CREATE
   const createNewProject = (name) => {
     const id = crypto.randomUUID();
-    const tasks = Tasks();
+    const tasks = {};
     projects[id] = { name, tasks };
   };
 
+  if (!projects) {
+    var projects = {};
+    createNewProject("Default Project");
+    createNewTask(returnProjectIDs()[0], { name: "New Task" });
+  };
+
   // RETURN
+  const returnAllData = () => {
+    return projects;
+  };
+
   const hasProject = (id) => {
     if (projects.hasOwnProperty(id)) {
       return true;
     } else {
       return false;
     }
-  };
-
-  // only for dev purposes:
-  const returnProjects = () => {
-    return projects;
   };
 
   const returnProjectIDs = () => {
@@ -59,9 +60,13 @@ export default (function Projects() {
 
   // TASK METHODS
   // CREATE
-  const createNewTask = (projectID, argsObj) => {
+  const createNewTask = (
+    projectID,
+    { name, description = "", dueDate = "", priority = "Low", status = "To do" }
+  ) => {
     if (hasProject(projectID)) {
-      projects[projectID].tasks.createNewTask(argsObj);
+      const taskID = crypto.randomUUID();
+      projects[projectID].tasks[taskID] = { name, description, dueDate, priority, status };
       return true;
     } else {
       return false;
@@ -69,10 +74,23 @@ export default (function Projects() {
   };
 
   // RETURN
-  // only for dev purposes:
-  const returnTasks = (projectID) => {
+  const hasTask = (projectID, taskID) => {
     if (hasProject(projectID)) {
-      return projects[projectID].tasks.returnTasks();
+      if (projects[projectID].hasOwnProperty(taskID)) {
+        return true;
+      } else {
+        console.log("Task does not exist");
+        return false;
+      }
+    } else {
+      console.log("Project does not exist");
+      return false;
+    }
+  };
+
+  const returnAllTasks = (projectID) => {
+    if (hasProject(projectID)) {
+      return projects[projectID].tasks;
     } else {
       return "Project not found";
     }
@@ -80,77 +98,69 @@ export default (function Projects() {
 
   const returnTaskIDs = (projectID) => {
     if (hasProject(projectID)) {
-      return projects[projectID].tasks.returnTaskIDs();
+      return Object.keys(projects[projectID].tasks);
     } else {
-      return "false - Project not found";
+      return "Project not found";
     }
   };
 
   const returnTask = (projectID, taskID) => {
-    if (hasProject(projectID)) {
-      if (projects[projectID].tasks.hasTask(taskID)) {
-        projects[projectID].tasks.returnTask(taskID);
-        return true;
-      } else {
-        return "false - Task not found";
-      }
-    } else {
-      return "false - Project not found";
+    if (hasTask(projectID, taskID)) {
+      return projects[projectID].tasks[taskID];
     }
   };
 
-  const returnAllData = () => {
-    let returnObject = {};
-    for (const [key, value] of Object.entries(projects)) {
-      returnObject[key] = {name: value.name, tasks: value.tasks.returnAllTasks()};
-    }
-    return returnObject;
-  }
-
   // UPDATE
-  const updateTask = (projectID, taskID, argsObj) => {
-    if (hasProject(projectID)) {
-      if (projects[projectID].tasks.hasTask(taskID)) {
-        projects[projectID].tasks.updateTask(taskID, argsObj);
-        return true;
-      } else {
-        return "false - Task not found";
-      }
+  const updateTask = (
+    projectID,
+    taskID,
+    {
+      name = false,
+      description = false,
+      dueDate = false,
+      priority = false,
+      status = false,
+    }
+  ) => {
+    if (hasTask(projectID, taskID)) {
+      projects[projectID].tasks[id].name = name ? name : tasks[id].name;
+      projects[projectID].tasks[id].description = description
+        ? description
+        : tasks[id].description;
+      projects[projectID].tasks[id].dueDate = dueDate
+        ? dueDate
+        : tasks[id].dueDate;
+      projects[projectID].tasks[id].priority = priority
+        ? priority
+        : tasks[id].priority;
+      projects[projectID].tasks[id].status = status ? status : tasks[id].status;
+      return true;
     } else {
-      return "false - Project not found";
+      return false;
     }
   };
 
   // DELETE
   const deleteTask = (projectID, taskID) => {
-    if (hasProject(projectID)) {
-      if (projects[projectID].tasks.hasTask(taskID)) {
-        projects[projectID].tasks.deleteTask(taskID);
-        return true;
-      } else {
-        return "false - Task not found";
-      }
-    } else {
-      return "false - Project not found";
+    if (hasTask(projectID, taskID)) {
+      delete projects[projectID].tasks[taskID];
     }
   };
 
-  createNewProject("Default Project");
-
   return {
     createNewProject,
+    returnAllData,
     hasProject,
-    returnProjects,
     returnProjectIDs,
     returnProject,
     updateProject,
     deleteProject,
     createNewTask,
-    returnTasks,
+    hasTask,
+    returnAllTasks,
     returnTaskIDs,
     returnTask,
-    returnAllData,
     updateTask,
     deleteTask,
   };
-})();
+};

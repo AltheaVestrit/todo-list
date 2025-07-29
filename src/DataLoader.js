@@ -7,10 +7,11 @@ export default (function Data() {
     const storedUserData = localStorage.getItem("userData");
     if (storedUserData) {
       const userData = JSON.parse(storedUserData);
+      return userData;
     } else {
-      console.log("User data not found in storage.");
+      console.log("No existing user data found in local storage. Creating new user data object...");
+      return false;
     }
-    return userData;
   };
 
   return { store, load };

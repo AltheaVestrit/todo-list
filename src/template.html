@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>To-do List</title>
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
     <div class="container">
@@ -14,17 +15,11 @@
       <main>
         <nav class="project-menu">
           <h3 class="project-menu-header">PROJECTS</h3>
-          <ul class="project-menu-list">
-            <li class="project-active">Project 1</li>
-            <li>Project 2</li>
-            <li>Project 3</li>
-            <li>Project 4</li>
-            <li>Project 5</li>
-          </ul>
+          <ul class="project-menu-list"></ul>
           <button class="new-project-btn btn">+ New Project</button>
         </nav>
         <div class="project-container">
-          <h2>Project 1</h2>
+          <h2 class="active-project-name">Project 1</h2>
           <button class="new-task-btn btn">+ New Task</button>
           
           <div class="task-table">
