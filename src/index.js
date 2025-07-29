@@ -23,6 +23,7 @@ const myProjects = StartProjects(dataLoader.load());
 myProjects.createNewProject("New Project");
 
 LoadToScreen.loadProjectsToNav(myProjects.returnAllData());
+LoadToScreen.loadActiveProject(myProjects.returnAllData());
 // ====================== TESTING ======================== //
 
 /*

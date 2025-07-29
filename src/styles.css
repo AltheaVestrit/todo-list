@@ -156,7 +156,7 @@ nav {
   width: 100%;
 }
 
-.cell {
+#task-table div {
   padding: 0.3em 1em;
   border: 0.2px solid var(--border);
   display: flex;
