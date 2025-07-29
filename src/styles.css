@@ -74,10 +74,10 @@ input, textarea, select {
 
 /* CONTAINER */
 .container {
-    width: 80%;
     background-color: var(--background);
     margin: 0 auto;
-    padding: 1em;
+    padding: 2rem;
+    width: 80%;
 }
 
 /* HEADER */
@@ -98,8 +98,13 @@ nav {
     background-color: var(--sidebar);
 }
 
+.project-menu {
+  text-align: center;
+}
+
 .project-menu-header {
     padding-left: 1rem;
+    text-align: left;
 }
 
 .project-menu-list {
@@ -107,6 +112,7 @@ nav {
     padding: 0;
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 .project-menu-list li {
@@ -121,4 +127,75 @@ nav {
 .project-active {
     background-color: var(--primary);
     color: var(--white);
+}
+
+/* + BUTTONS */
+.btn {
+  background-color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+}
+
+.btn:hover {
+  background-color: var(--secondary);
+}
+
+/* PROJECT OVERVIEW */
+.project-container {
+  padding-left: 2rem;
+}
+
+/* GRID */
+.task-table {
+  display: grid;
+  grid-template-columns: max-content 1fr repeat(4, max-content);
+  border: 0.2px solid var(--border);
+  width: 100%;
+}
+
+.cell {
+  padding: 0.3em 1em;
+  border: 0.2px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+
+.tbl-head {
+  background-color: var(--text-secondary);
+  color: var(--white);
+}
+
+.task-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.task-btn:hover {
+  cursor: pointer;
+}
+/* TOOLTIPS */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: var(--white);
+  color: var(--text-primary);
+  text-align: center;
+  padding: 0.2em 0.7em;
+  border: 1px solid var(--black);
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

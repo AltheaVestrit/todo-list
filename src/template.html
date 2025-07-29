@@ -21,33 +21,41 @@
             <li>Project 4</li>
             <li>Project 5</li>
           </ul>
-          <button>+ New Project</button>
+          <button class="new-project-btn btn">+ New Project</button>
         </nav>
         <div class="project-container">
           <h2>Project 1</h2>
-          <button>+ New Task</button>
-          <table>
-            <thead>
-              <tr>
-                <td>Task Name</td>
-                <td>Description</td>
-                <td>Due Date</td>
-                <td>Priority</td>
-                <td>Status</td>
-                <td>Actions</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Task 1</td>
-                <td>Lorem ipsum</td>
-                <td>2025-08-01</td>
-                <td>High</td>
-                <td>In Progress</td>
-                <td>✏️ 🗑️ 🔄</td>
-              </tr>
-            </tbody>
-          </table>
+          <button class="new-task-btn btn">+ New Task</button>
+          
+          <div class="task-table">
+            <div class="cell tbl-head">Task Name</div>
+            <div class="cell tbl-head">Description</div>
+            <div class="cell tbl-head">Due Date</div>
+            <div class="cell tbl-head">Priority</div>
+            <div class="cell tbl-head">Status</div>
+            <div class="cell tbl-head">Actions</div>
+            <div class="cell">Task 1</div>
+            <div class="cell">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor expedita, aperiam facilis neque illum numquam sapiente! Assumenda voluptas explicabo voluptatibus.</div>
+            <div class="cell">01-08-2025</div>
+            <div class="cell">High</div>
+            <div class="cell">In Progress</div>
+            <div class="cell">
+              <button class="task-btn btn-edit tooltip">
+                ✏️
+                <span class="tooltiptext small-text">Edit</span>
+              </button>
+              <button class="task-btn btn-delete tooltip">
+                🗑️
+                <span class="tooltiptext small-text">Delete</span>
+              </button>
+              <button class="task-btn btn-change-project tooltip">
+                🔄
+                <span class="tooltiptext small-text">Change Project</span>
+              </button>
+            </div>
+          </div>
+
+          
         </div>
       </main>
     </div>
