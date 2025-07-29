@@ -99,6 +99,14 @@ export default (function Projects() {
     }
   };
 
+  const returnAllData = () => {
+    let returnObject = {};
+    for (const [key, value] of Object.entries(projects)) {
+      returnObject[key] = {name: value.name, tasks: value.tasks.returnAllTasks()};
+    }
+    return returnObject;
+  }
+
   // UPDATE
   const updateTask = (projectID, taskID, argsObj) => {
     if (hasProject(projectID)) {
@@ -141,6 +149,7 @@ export default (function Projects() {
     returnTasks,
     returnTaskIDs,
     returnTask,
+    returnAllData,
     updateTask,
     deleteTask,
   };

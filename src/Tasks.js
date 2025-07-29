@@ -45,6 +45,20 @@ export default function Tasks() {
     }
   };
 
+  const returnAllTasks = () => {
+    let returnObject = {};
+    for (const [key, value] of Object.entries(tasks)) {
+      returnObject[key] = {
+        name: value.name,
+        description: value.description,
+        dueDate: value.dueDate,
+        priority: value.priority,
+        status: value.status,
+      };
+    }
+    return returnObject;
+  };
+
   // UPDATE
   const updateTask = (
     id,
@@ -86,6 +100,7 @@ export default function Tasks() {
     returnTasks,
     returnTaskIDs,
     returnTask,
+    returnAllTasks,
     updateTask,
     deleteTask,
   };

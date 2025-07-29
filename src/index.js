@@ -19,6 +19,7 @@ import myProjects from "./Projects.js";
 
 // ====================== TESTING ======================== //
 
+
 // PROJECT MODULES
 console.log("=================================");
 console.log("INITIALIZE PROJECTS IIFE");
@@ -142,3 +143,6 @@ console.log(
   "Task deleted: " + myProjects.deleteTask(newProject, "23497234987")
 );
 console.log(myProjects.returnTasks(newProject));
+
+
+console.log(myProjects.returnAllData());
