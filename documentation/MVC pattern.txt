@@ -1,0 +1,38 @@
+MVC is one possible pattern for organizing your code. It's a popular one.
+
+ * Model - Manages the data of an application
+ * View - A visual representation of the model
+ * Controller - Links the user and the system
+
+The model is the data. In this todo application, that'll be the actual todos, and the methods that will add, edit, or delete them.
+
+The view is how the data is displayed. In this todo application, that will be the rendered HTML in the DOM and CSS.
+
+The controller connects the model and the view. It takes user input, such as clicking or typing, and handles callbacks for user interactions.
+
+The model never touches the view. The view never touches the model. The controller connects them.
+
+Simple example:
+
+-----------------------------------------------------
+
+class Model {
+  constructor() {}
+}
+
+class View {
+  constructor() {}
+}
+
+class Controller {
+  constructor(model, view) {
+    this.model = model
+    this.view = view
+  }
+}
+
+const app = new Controller(new Model(), new View())
+
+-----------------------------------------------------
+
+see: https://www.taniarascia.com/javascript-mvc-todo-app/

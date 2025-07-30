@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-do List</title>
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
   </head>
   <body>
     <div id="container">
       <header>
         <h1>TO-DO LIST</h1>
+        <button id="reset" class="btn">Reset</button>
       </header>
       <main>
         <nav id="project-menu">
           <h3 id="project-menu-header">PROJECTS</h3>
           <ul id="project-menu-list"></ul>
+          <input id="new-project-name">
           <button id="new-project-btn" class="btn">+ New Project</button>
         </nav>
         <div id="project-container">
-          <h2 id="active-project-name">Project 1</h2>
+          <h2 id="active-project-name"></h2>
+          <input id="new-task-name">
           <button id="new-task-btn" class="btn">+ New Task</button>
-          
           <div id="task-table"></div>
-
-          
         </div>
       </main>
     </div>
