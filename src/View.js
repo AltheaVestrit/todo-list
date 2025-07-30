@@ -132,7 +132,7 @@ export default class View {
   bindCreateTask(handler) {
     this.createTaskBtn.addEventListener("click", (e) => {
       if (this.newTaskName.value) {
-        handler(this.#getActiveProject(), {name: this.newTaskName.value});
+        handler(this.#getActiveProject(), { name: this.newTaskName.value });
       }
     });
   }
