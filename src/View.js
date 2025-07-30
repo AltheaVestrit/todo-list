@@ -16,11 +16,6 @@ export default class View {
     this.resetToDoListBtn = this.getElement("#reset");
   }
 
-  // "Copy" the onChange function from the Controller to the Model class
-  bindOnToDoListChange(callback) {
-    this.onToDoListChange = callback;
-  }
-
   createElement(tag, className, itemID) {
     const element = document.createElement(tag);
     if (className) element.className = className;
@@ -61,7 +56,7 @@ export default class View {
     let firstProjectID;
     for (const [key, value] of Object.entries(projects)) {
       firstProjectID = firstProjectID ? firstProjectID : key;
-      const project = this.createElement("li", false, key);
+      const project = this.createElement("li", "project", key);
       project.innerText = value.name;
       this.projectsList.appendChild(project);
     }
@@ -129,6 +124,7 @@ export default class View {
     });
   }
 
+  // TO DO: make app stay on the same project when task is added
   bindCreateTask(handler) {
     this.createTaskBtn.addEventListener("click", (e) => {
       if (this.newTaskName.value) {
@@ -140,6 +136,12 @@ export default class View {
   bindResetToDoList(handler) {
     this.resetToDoListBtn.addEventListener("click", (e) => {
       handler();
+    });
+  }
+
+  bindToggleProject(handler) {
+    this.projectsList.addEventListener("click", (e) => {
+      handler(e.target.dataset.id);
     });
   }
 }

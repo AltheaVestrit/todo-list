@@ -5,10 +5,10 @@ export default class Controller {
 
     // Explicit 'this' binding
     this.model.bindOnToDoListChange(this.onToDoListChange);
-    this.view.bindOnToDoListChange(this.onToDoListChange);
     this.view.bindCreateProject(this.handleCreateProject);
     this.view.bindCreateTask(this.handleCreateTask);
     this.view.bindResetToDoList(this.handleReset);
+    this.view.bindToggleProject(this.onToDoListChange);
 
     // Display initial projects and tasks
     this.view.renderProjects(this.model.projects);
