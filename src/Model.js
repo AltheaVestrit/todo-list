@@ -57,7 +57,7 @@ export default class Model {
         priority,
         status,
       };
-      this.#commit();
+      this.#commit(projectID);
     }
   }
 
