@@ -15,7 +15,6 @@ export default class Model {
     const tasks = {};
     this.projects[id] = { name, tasks };
     this.#commit(id);
-    return id;
   }
 
   // CHECK

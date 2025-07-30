@@ -84,7 +84,7 @@ export default class View {
         for (const [key, value] of Object.entries(taskObj)) {
           const cell = this.createElement("div");
           cell.innerText = value;
-          taskTable.appendChild(cell);
+          this.taskTable.appendChild(cell);
         }
         const actionCell = this.createElement("div");
         const editBtn = this.createElement(
@@ -96,7 +96,7 @@ export default class View {
         editBtn.innerHTML = `✏️
             <span class="tooltiptext small-text">Edit</span>`;
         actionCell.appendChild(editBtn);
-        const deleteBtn = document.createElement(
+        const deleteBtn = this.createElement(
           "button",
           "task-btn tooltip",
           taskID
@@ -105,7 +105,7 @@ export default class View {
         deleteBtn.innerHTML = `🗑️
             <span class="tooltiptext small-text">Delete</span>`;
         actionCell.appendChild(deleteBtn);
-        const changeProjectBtn = document.createElement(
+        const changeProjectBtn = this.createElement(
           "button",
           "task-btn tooltip",
           taskID
@@ -114,7 +114,7 @@ export default class View {
         changeProjectBtn.innerHTML = `🔄
             <span class="tooltiptext small-text">Change Project</span>`;
         actionCell.appendChild(changeProjectBtn);
-        taskTable.appendChild(actionCell);
+        this.taskTable.appendChild(actionCell);
       }
     } else {
       this.projectTitle.innerText = "";
@@ -124,7 +124,7 @@ export default class View {
   bindCreateProject(handler) {
     this.createProjectBtn.addEventListener("click", (e) => {
       if (this.newProjectName.value) {
-        const newProjectID = handler(this.newProjectName.value);
+        handler(this.newProjectName.value);
       }
     });
   }
@@ -132,7 +132,7 @@ export default class View {
   bindCreateTask(handler) {
     this.createTaskBtn.addEventListener("click", (e) => {
       if (this.newTaskName.value) {
-        handler(this.#getActiveProject(), this.newTaskName.value);
+        handler(this.#getActiveProject(), {name: this.newTaskName.value});
       }
     });
   }

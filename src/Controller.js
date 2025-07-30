@@ -28,7 +28,7 @@ export default class Controller {
   };
 
   handleCreateProject = (name) => {
-    return this.model.createProject(name);
+    this.model.createProject(name);
   };
 
   handleUpdateProject = (id, name) => {
@@ -39,8 +39,8 @@ export default class Controller {
     this.model.deleteProject(id);
   };
 
-  handleCreateTask = (projectID, task) => {
-    this.model.createTask(projectID, task);
+  handleCreateTask = (projectID, name) => {
+    this.model.createTask(projectID, name);
   };
 
   handleUpdateTask = (projectID, taskID, task) => {
