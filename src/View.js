@@ -10,9 +10,7 @@ export default class View {
     this.projectTitle = this.getElement("#active-project-name");
     // "Add task" button
     this.createTaskBtn = this.getElement("#new-task-btn");
-    // Dev elements
-    this.newProjectName = this.getElement("#new-project-name");
-    this.newTaskName = this.getElement("#new-task-name");
+    // Reset button
     this.resetToDoListBtn = this.getElement("#reset");
     // Project modal
     this.projectModal = this.getElement("#project-form");
@@ -20,6 +18,12 @@ export default class View {
     this.projectCloseModalBtn = this.getElement("#project-close-btn");
     this.projectModalSubmitBtn = this.getElement("#project-modal-submit-btn");
     this.projectInputName = this.getElement("#project-input-name");
+    // Task modal
+    this.taskModal = this.getElement("#task-form");
+    this.taskModalOverlay = this.getElement("#task-overlay");
+    this.taskCloseModalBtn = this.getElement("#task-close-btn");
+    this.taskModalSubmitBtn = this.getElement("#task-modal-submit-btn");
+    this.taskInputName = this.getElement("#task-input-name");
   }
 
   createElement(tag, className, itemID) {
@@ -126,6 +130,7 @@ export default class View {
     const modalClose = () => {
       this.projectModal.classList.add("hidden");
       this.projectModalOverlay.classList.add("hidden");
+      this.projectInputName.value = "";
     }
     const modalSubmit = () => {
       if (this.projectInputName.value) {
@@ -157,12 +162,40 @@ export default class View {
     })
   }
 
-  bindCreateTask(handler) {
-    this.createTaskBtn.addEventListener("click", (e) => {
-      if (this.newTaskName.value) {
-        handler(this.#getActiveProject(), { name: this.newTaskName.value });
+  bindCreateTaskModal(handler) {
+    const modalClose = () => {
+      this.taskModal.classList.add("hidden");
+      this.taskModalOverlay.classList.add("hidden");
+      this.taskInputName.value = "";
+    }
+    const modalSubmit = () => {
+      if (this.taskInputName.value) {
+        handler(this.#getActiveProject(), { name: this.taskInputName.value });
+        this.taskInputName.value = "";
+        modalClose();
+      }
+    }
+    this.taskCloseModalBtn.addEventListener("click", modalClose);
+    this.taskModalOverlay.addEventListener("click", modalClose);
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && !this.taskModal.classList.contains("hidden")) {
+        modalClose();
       }
     });
+    this.createTaskBtn.addEventListener("click", (e) => {
+      this.taskModal.classList.remove("hidden");
+      this.taskModalOverlay.classList.remove("hidden");
+    });
+    this.taskModalSubmitBtn.addEventListener("click", e => {
+      if (this.taskInputName.value) {
+        modalSubmit();
+      }
+    })
+    document.addEventListener("keydown", e => {
+      if (e.key === "Enter" && !this.taskModal.classList.contains("hidden")) {
+        modalSubmit();
+      }
+    })
   }
 
   bindResetToDoList(handler) {

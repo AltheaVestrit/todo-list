@@ -6,7 +6,7 @@ export default class Controller {
     // Explicit 'this' binding
     this.model.bindOnToDoListChange(this.onToDoListChange);
     this.view.bindCreateProjectModal(this.handleCreateProject);
-    this.view.bindCreateTask(this.handleCreateTask);
+    this.view.bindCreateTaskModal(this.handleCreateTask);
     this.view.bindResetToDoList(this.handleReset);
     this.view.bindToggleProject(this.onToDoListChange);
 

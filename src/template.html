@@ -21,7 +21,6 @@
         </nav>
         <div id="project-container">
           <h2 id="active-project-name"></h2>
-          <input id="new-task-name">
           <button id="new-task-btn" class="btn">+ New Task</button>
           <div id="task-table"></div>
         </div>
@@ -42,6 +41,21 @@
       </div>
     </section>
     <div id="project-overlay" class="overlay hidden"></div>
+
+    <section class="modal hidden" id="task-form">
+      <div class="modal-header">
+        <h3>Create Task</h3>
+        <button class="btn-close btn" id="task-close-btn">⨉</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-input">
+          <label for="task-input-name">Name:</label>
+          <input id="task-input-name" placeholder="New task name" />
+        </div>
+        <button id="task-modal-submit-btn" class="btn">Submit</button>
+      </div>
+    </section>
+    <div id="task-overlay" class="overlay hidden"></div>
 
   </body>
 </html>
