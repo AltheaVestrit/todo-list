@@ -29,20 +29,20 @@
       </main>
     </div>
 
-    <section class="modal hidden project-form">
+    <section class="modal hidden" id="project-form">
       <div class="modal-header">
         <h3>Create Project</h3>
-        <button class="btn-close btn">⨉</button>
+        <button class="btn-close btn" id="project-close-btn">⨉</button>
       </div>
       <div class="modal-body">
         <div class="form-input">
-          <label for="project-name-input">Name:</label>
-          <input id="project-name-input" placeholder="New project name" />
+          <label for="project-input-name">Name:</label>
+          <input id="project-input-name" placeholder="New project name" />
         </div>
-        <button class="btn">Submit</button>
+        <button id="project-modal-submit-btn" class="btn">Submit</button>
       </div>
     </section>
-    <div class="overlay hidden"></div>
+    <div id="project-overlay" class="overlay hidden"></div>
 
   </body>
 </html>

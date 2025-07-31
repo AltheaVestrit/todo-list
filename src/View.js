@@ -14,6 +14,12 @@ export default class View {
     this.newProjectName = this.getElement("#new-project-name");
     this.newTaskName = this.getElement("#new-task-name");
     this.resetToDoListBtn = this.getElement("#reset");
+    // Project modal
+    this.projectModal = this.getElement("#project-form");
+    this.projectModalOverlay = this.getElement("#project-overlay");
+    this.projectCloseModalBtn = this.getElement("#project-close-btn");
+    this.projectModalSubmitBtn = this.getElement("#project-modal-submit-btn");
+    this.projectInputName = this.getElement("#project-input-name");
   }
 
   createElement(tag, className, itemID) {
@@ -116,15 +122,30 @@ export default class View {
     }
   }
 
-  bindCreateProject(handler) {
-    this.createProjectBtn.addEventListener("click", (e) => {
-      if (this.newProjectName.value) {
-        handler(this.newProjectName.value);
+  bindProjectModal(handler) {
+    const modalClose = () => {
+      this.projectModal.classList.add("hidden");
+      this.projectModalOverlay.classList.add("hidden");
+    }
+    this.projectCloseModalBtn.addEventListener("click", modalClose);
+    this.projectModalOverlay.addEventListener("click", modalClose);
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && !this.projectModal.classList.contains("hidden")) {
+        modalClose();
       }
     });
+    this.createProjectBtn.addEventListener("click", (e) => {
+      this.projectModal.classList.remove("hidden");
+      this.projectModalOverlay.classList.remove("hidden");
+    });
+    this.projectModalSubmitBtn.addEventListener("click", e => {
+      if (this.projectInputName.value) {
+        handler(this.projectInputName.value);
+        modalClose();
+      }
+    })
   }
 
-  // TO DO: make app stay on the same project when task is added
   bindCreateTask(handler) {
     this.createTaskBtn.addEventListener("click", (e) => {
       if (this.newTaskName.value) {
