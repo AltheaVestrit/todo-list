@@ -122,10 +122,17 @@ export default class View {
     }
   }
 
-  bindProjectModal(handler) {
+  bindCreateProjectModal(handler) {
     const modalClose = () => {
       this.projectModal.classList.add("hidden");
       this.projectModalOverlay.classList.add("hidden");
+    }
+    const modalSubmit = () => {
+      if (this.projectInputName.value) {
+        handler(this.projectInputName.value);
+        this.projectInputName.value = "";
+        modalClose();
+      }
     }
     this.projectCloseModalBtn.addEventListener("click", modalClose);
     this.projectModalOverlay.addEventListener("click", modalClose);
@@ -140,8 +147,12 @@ export default class View {
     });
     this.projectModalSubmitBtn.addEventListener("click", e => {
       if (this.projectInputName.value) {
-        handler(this.projectInputName.value);
-        modalClose();
+        modalSubmit();
+      }
+    })
+    document.addEventListener("keydown", e => {
+      if (e.key === "Enter" && !this.projectModal.classList.contains("hidden")) {
+        modalSubmit();
       }
     })
   }

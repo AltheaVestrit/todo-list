@@ -106,7 +106,24 @@ select {
 /* HEADER */
 header {
   margin: 1rem;
-  padding-left: 6%;
+  padding: 0 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#reset {
+  height: 2.5em;
+  width: 6em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(0, 1.5em);
+  background-color: var(--danger);
+}
+
+#reset:hover {
+  background-color: var(--warning);
 }
 
 /* MAIN */
