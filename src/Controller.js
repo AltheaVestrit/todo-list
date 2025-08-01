@@ -3,15 +3,15 @@ export default class Controller {
     this.model = model;
     this.view = view;
 
+    // Load data from localStorage to page
+    this.onToDoListChange();
+
     // Explicit 'this' binding
     this.model.bindOnToDoListChange(this.onToDoListChange);
     this.view.bindCreateProjectModal(this.handleCreateProject);
     this.view.bindCreateTaskModal(this.handleCreateTask);
     this.view.bindResetToDoList(this.handleReset);
     this.view.bindToggleProject(this.onToDoListChange);
-
-    // Display initial projects and tasks
-    this.view.renderProjects(this.model.projects);
   }
 
   /* 
@@ -25,6 +25,7 @@ export default class Controller {
     } else {
       this.view.renderProjects(this.model.projects);
     }
+    this.view.bindDeleteTask(this.handleDeleteTask);
   };
 
   handleCreateProject = (name) => {

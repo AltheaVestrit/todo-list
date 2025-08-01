@@ -64,7 +64,7 @@ export default class Model {
   // CHECK
   #hasTask(projectID, taskID) {
     if (this.#hasProject(projectID)) {
-      if (this.projects[projectID].hasOwnProperty(taskID)) {
+      if (this.projects[projectID].tasks.hasOwnProperty(taskID)) {
         return true;
       } else {
         console.log("Task does not exist");

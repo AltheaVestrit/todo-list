@@ -21,7 +21,7 @@
         </nav>
         <div id="project-container">
           <h2 id="active-project-name"></h2>
-          <button id="new-task-btn" class="btn">+ New Task</button>
+          <button id="new-task-btn" class="btn hidden">+ New Task</button>
           <div id="task-table"></div>
         </div>
       </main>
@@ -49,13 +49,41 @@
       </div>
       <div class="modal-body">
         <div class="form-input">
-          <label for="task-input-name">Name:</label>
-          <input id="task-input-name" placeholder="New task name" />
+          <label for="task-input-name">Name*:</label>
+          <input id="task-input-name" name="name" placeholder="New task name" />
         </div>
+        <div class="form-input">
+          <label for="task-input-description">Description:</label>
+          <textarea
+            name="description"
+            id="task-input-description"
+            placeholder="Description"
+          ></textarea>
+        </div>
+        <div class="form-input">
+          <label for="task-input-date">Due Date:</label>
+          <input id="task-input-date" name="date" type="date" />
+        </div>
+        <div class="form-input">
+          <label for="task-input-priority">Priority*:</label>
+          <select name="priority" id="task-input-priority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+        <div class="form-input">
+          <label for="task-input-status">Status*:</label>
+          <select name="status" id="task-input-status">
+            <option value="To do">To do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Done">Done</option>
+          </select>
+        </div>
+        <p style="text-align: left; width: 100%">* This field is mandatory</p>
         <button id="task-modal-submit-btn" class="btn">Submit</button>
       </div>
     </section>
     <div id="task-overlay" class="overlay hidden"></div>
-
   </body>
 </html>

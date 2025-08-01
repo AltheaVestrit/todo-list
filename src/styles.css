@@ -203,6 +203,7 @@ nav {
   border: 0.2px solid var(--border);
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .tbl-head {
@@ -283,23 +284,21 @@ nav {
   display: flex;
   flex-direction: column;
   padding: 0.8rem 1rem;
-  gap: 2rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
 .form-input {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-input label {
   text-transform: none;
   color: var(--text-primary);
   padding-left: 0.2em;
-}
-
-.form-input input {
-  box-sizing: border-box;
-  width: 100%;
+  margin: 0;
 }
 
 .modal-body button {
@@ -322,4 +321,10 @@ nav {
 
 .hidden {
   display: none;
+}
+
+input, textarea {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
 }

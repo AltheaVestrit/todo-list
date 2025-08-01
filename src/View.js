@@ -2,7 +2,6 @@ export default class View {
   constructor() {
     // Nav list with projects
     this.projectsList = this.getElement("#project-menu-list");
-    this.projectsListItems = document.querySelectorAll("#project-menu-list li");
     // "Add project" button
     this.createProjectBtn = this.getElement("#new-project-btn");
     // Tasks section
@@ -24,6 +23,10 @@ export default class View {
     this.taskCloseModalBtn = this.getElement("#task-close-btn");
     this.taskModalSubmitBtn = this.getElement("#task-modal-submit-btn");
     this.taskInputName = this.getElement("#task-input-name");
+    this.taskInputDescription = this.getElement("#task-input-description");
+    this.taskInputDate = this.getElement("#task-input-date");
+    this.taskInputPriority = this.getElement("#task-input-priority");
+    this.taskInputStatus = this.getElement("#task-input-status");
   }
 
   createElement(tag, className, itemID) {
@@ -62,10 +65,12 @@ export default class View {
   <div class="tbl-head">Actions</div>`;
 
   renderProjects(projects, projectID) {
+    this.createTaskBtn.classList.add("hidden");
     this.projectsList.innerHTML = "";
     let firstProjectID;
     for (const [key, value] of Object.entries(projects)) {
       firstProjectID = firstProjectID ? firstProjectID : key;
+      this.createTaskBtn.classList.remove("hidden");
       const project = this.createElement("li", "project", key);
       project.innerText = value.name;
       this.projectsList.appendChild(project);
@@ -92,33 +97,30 @@ export default class View {
           this.taskTable.appendChild(cell);
         }
         const actionCell = this.createElement("div");
-        const editBtn = this.createElement(
-          "button",
-          "task-btn tooltip",
-          taskID
-        );
-        editBtn.id = "btn-edit";
-        editBtn.innerHTML = `✏️
-            <span class="tooltiptext small-text">Edit</span>`;
-        actionCell.appendChild(editBtn);
+        // const editBtn = this.createElement(
+        //   "button",
+        //   "task-btn tooltip btn-edit",
+        //   taskID
+        // );
+        // editBtn.innerHTML = `✏️
+        //     <span class="tooltiptext small-text">Edit</span>`;
+        // actionCell.appendChild(editBtn);
         const deleteBtn = this.createElement(
           "button",
-          "task-btn tooltip",
+          "task-btn tooltip btn-delete",
           taskID
         );
-        deleteBtn.id = "btn-delete";
         deleteBtn.innerHTML = `🗑️
             <span class="tooltiptext small-text">Delete</span>`;
         actionCell.appendChild(deleteBtn);
-        const changeProjectBtn = this.createElement(
-          "button",
-          "task-btn tooltip",
-          taskID
-        );
-        changeProjectBtn.id = "btn-delete";
-        changeProjectBtn.innerHTML = `🔄
-            <span class="tooltiptext small-text">Change Project</span>`;
-        actionCell.appendChild(changeProjectBtn);
+        // const changeProjectBtn = this.createElement(
+        //   "button",
+        //   "task-btn tooltip btn-change-project",
+        //   taskID
+        // );
+        // changeProjectBtn.innerHTML = `🔄
+        //     <span class="tooltiptext small-text">Change Project</span>`;
+        // actionCell.appendChild(changeProjectBtn);
         this.taskTable.appendChild(actionCell);
       }
     } else {
@@ -126,23 +128,35 @@ export default class View {
     }
   }
 
+  bindDeleteTask(handler) {
+    const delBtns = document.querySelectorAll(".btn-delete");
+    delBtns.forEach(button => {
+      button.addEventListener("click", e => {
+        handler(this.#getActiveProject(),e.target.dataset.id);
+      })
+    })
+  }
+
   bindCreateProjectModal(handler) {
     const modalClose = () => {
       this.projectModal.classList.add("hidden");
       this.projectModalOverlay.classList.add("hidden");
       this.projectInputName.value = "";
-    }
+    };
     const modalSubmit = () => {
       if (this.projectInputName.value) {
         handler(this.projectInputName.value);
         this.projectInputName.value = "";
         modalClose();
       }
-    }
+    };
     this.projectCloseModalBtn.addEventListener("click", modalClose);
     this.projectModalOverlay.addEventListener("click", modalClose);
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape" && !this.projectModal.classList.contains("hidden")) {
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        !this.projectModal.classList.contains("hidden")
+      ) {
         modalClose();
       }
     });
@@ -150,16 +164,19 @@ export default class View {
       this.projectModal.classList.remove("hidden");
       this.projectModalOverlay.classList.remove("hidden");
     });
-    this.projectModalSubmitBtn.addEventListener("click", e => {
+    this.projectModalSubmitBtn.addEventListener("click", (e) => {
       if (this.projectInputName.value) {
         modalSubmit();
       }
-    })
-    document.addEventListener("keydown", e => {
-      if (e.key === "Enter" && !this.projectModal.classList.contains("hidden")) {
+    });
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Enter" &&
+        !this.projectModal.classList.contains("hidden")
+      ) {
         modalSubmit();
       }
-    })
+    });
   }
 
   bindCreateTaskModal(handler) {
@@ -167,17 +184,23 @@ export default class View {
       this.taskModal.classList.add("hidden");
       this.taskModalOverlay.classList.add("hidden");
       this.taskInputName.value = "";
-    }
+    };
     const modalSubmit = () => {
       if (this.taskInputName.value) {
-        handler(this.#getActiveProject(), { name: this.taskInputName.value });
+        handler(this.#getActiveProject(), {
+          name: this.taskInputName.value,
+          description: this.taskInputDescription.value,
+          dueDate: this.taskInputDate.value,
+          priority: this.taskInputPriority.value,
+          status: this.taskInputStatus.value,
+        });
         this.taskInputName.value = "";
         modalClose();
       }
-    }
+    };
     this.taskCloseModalBtn.addEventListener("click", modalClose);
     this.taskModalOverlay.addEventListener("click", modalClose);
-    document.addEventListener("keydown", e => {
+    document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !this.taskModal.classList.contains("hidden")) {
         modalClose();
       }
@@ -186,16 +209,16 @@ export default class View {
       this.taskModal.classList.remove("hidden");
       this.taskModalOverlay.classList.remove("hidden");
     });
-    this.taskModalSubmitBtn.addEventListener("click", e => {
+    this.taskModalSubmitBtn.addEventListener("click", (e) => {
       if (this.taskInputName.value) {
         modalSubmit();
       }
-    })
-    document.addEventListener("keydown", e => {
+    });
+    document.addEventListener("keydown", (e) => {
       if (e.key === "Enter" && !this.taskModal.classList.contains("hidden")) {
         modalSubmit();
       }
-    })
+    });
   }
 
   bindResetToDoList(handler) {
